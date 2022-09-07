@@ -1,4 +1,5 @@
 # Checking Validity of Arguments using Tableau
+Refer to `FOL-tablueau.pdf` for problem statement.
 
 ## Compiling
 Run SML emvironment using `rlwrap sml`. Load file using `use fol.sml;`.
