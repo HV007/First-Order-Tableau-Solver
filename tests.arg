@@ -1,0 +1,14 @@
+val arg = HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("F", [VAR("x")]))],ATOM("G", [FUN("a", [])])); 1.1
+val arg = HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("G", [VAR("x")]))],ATOM("F", [FUN("a", [])])); 1.2
+val arg = HENCE([ALL(VAR("y"), ATOM("p", [VAR("y")]))], ALL(VAR("x"), ATOM("p", [FUN("f", [FUN("g", [VAR("x")])])]))); 2
+val arg = HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")])))], EX(VAR("x"), AND(ATOM("F", [VAR("x")]), ATOM("H", [VAR("x")])))); 3
+val arg = HENCE([], BIC(EX(VAR("x"), AND(ATOM("P", [VAR("x")]), ATOM("Q", [VAR("x")]))), AND(EX(VAR("x"), ATOM("P", [VAR("x")])), EX(VAR("x"), ATOM("Q", [VAR("x")]))))); 4
+val arg = HENCE([ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("G", [VAR("x")]))), ALL(VAR("x"), ATOM("G", [VAR("x")]))],ATOM("F", [FUN("a", [])]));
+
+val arg = HENCE([EX(VAR("x"), ALL(VAR("y"), ATOM("L", [VAR("x"), VAR("y")])))], ALL(VAR("x"), EX(VAR("y"), ATOM("L", [VAR("y"), VAR("x")])))); 6
+
+val p1 = ALL(VAR("x"), COND(ATOM("p", [VAR("x")]), EX( VAR("y"), AND(ATOM("p", [VAR("y")]), ATOM("q", [VAR("y"), VAR("x")])))));
+val p2 = ALL(VAR("x"), COND(ATOM("F", [VAR("x")]), ATOM("r", [VAR("x"), FUN("a", [])])));
+val px = COND(ATOM("p", [VAR("x")]), COND(ATOM("p", [VAR("y")]), COND(ATOM("r", [VAR("y"), VAR("x")]), NOT(ATOM("q", [VAR("x"), VAR("y")])))));
+val p3 = ALL(VAR("x"), ALL(VAR("y"), px));
+val arg = HENCE([p1, p2, p3], NOT(ATOM("p", [FUN("a",[])])));
